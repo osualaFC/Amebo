@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/register"
+    tools:context=".RegisterActivity">
+
+    <!--    appbar-->
+    <include
+        android:id="@+id/register_appbar"
+        layout="@layout/register_app_bar_layout"/>
+
+<!--     register form-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center_horizontal"
+        android:layout_centerInParent="true">
+
+        <EditText
+            android:id="@+id/register_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:inputType="text"
+            android:hint="username"
+            android:textColorHint="@android:color/white"/>
+
+        <EditText
+            android:id="@+id/register_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:inputType="textEmailAddress"
+            android:hint="email"
+            android:layout_marginTop="10dp"
+            android:textColorHint="@android:color/white"/>
+
+        <EditText
+            android:id="@+id/register_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:inputType="textPassword"
+            android:hint="password"
+            android:layout_marginTop="10dp"
+            android:textColorHint="@android:color/white"/>
+
+        <Button
+            android:id="@+id/register_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:text="Register"
+            android:background="@color/colorPrimaryDark"
+            android:layout_marginTop="10dp"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

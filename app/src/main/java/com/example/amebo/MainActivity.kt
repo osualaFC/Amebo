@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     private val PAGES = 3
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        super.onCreate(savedInstanceState) 
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.main_toolbar))
 
@@ -39,9 +39,9 @@ class MainActivity : AppCompatActivity() {
         /** 1D setting the tab layout using tab layout mediator**/
         TabLayoutMediator(tab_layout, viewpager){ t, position ->
             when(position){
-                0 -> t.text = "Chats"
-                1 -> t.text = "Search"
-                2 -> t.text = "Settings"
+                0 -> t.text = "CHATS"
+                1 -> t.text = "SEARCH"
+                2 -> t.text = "SETTINGS"
             }
         }.attach() /**connect tab layout with viewpager**/
 

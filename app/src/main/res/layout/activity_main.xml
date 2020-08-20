@@ -7,48 +7,18 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
+<!--    appbar-->
+<include
+    android:id="@+id/appbar"
+    layout="@layout/main_app_bar_layout"/>
+
+    <!--        TabLayout-->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        >
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/main_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
-
-<!--            custom circular image view-->
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profile_pic"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:src="@drawable/ic_profile"
-                android:tint="@android:color/white"/>
-<!--            username-->
-            <TextView
-                android:id="@+id/username"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="username"
-                android:textSize="18sp"
-                android:textColor="@android:color/white"
-                android:layout_marginStart="26dp"
-                android:textStyle="bold"/>
-
-        </androidx.appcompat.widget.Toolbar>
-
-<!--        TabLayout-->
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
-            app:tabIndicatorColor="@android:color/white"/>
-
-    </com.google.android.material.appbar.AppBarLayout>
+        android:background="@color/colorPrimaryDark"
+        app:tabIndicatorColor="@android:color/white"/>
 
 <!--    viewpager-->
     <androidx.viewpager2.widget.ViewPager2
