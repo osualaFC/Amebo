@@ -10,7 +10,7 @@
     <!--    appbar-->
     <include
         android:id="@+id/login_appbar"
-        layout="@layout/register_app_bar_layout"/>
+        layout="@layout/login_app_bar_layout"/>
 
     <!--     login form-->
     <LinearLayout
