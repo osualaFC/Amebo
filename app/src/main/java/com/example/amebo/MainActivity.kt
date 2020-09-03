@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
                     val user: Users? = p0.getValue(Users::class.java)
                     /**set name and profile views with the data from db**/
                     username.text = user!!.getUSERNAME()
-                    Picasso.get().load(user.getPROFILE()).into(profile_pic)
+                    Picasso.get().load(user.getPROFILE()).placeholder(R.drawable.ic_profile).into(profile_pic)
                 }
             }
 
