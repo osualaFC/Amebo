@@ -77,6 +77,7 @@ class RegisterActivity : AppCompatActivity() {
                             userHashMap["search"] = userName.toLowerCase()
                             userHashMap["facebook"] = "https://m.facebook.com"
                             userHashMap["instagram"] = "https://m.instagram.com"
+
                             userHashMap["website"] = "https://www.google.com"
 
                         /** update database **/
