@@ -77,8 +77,8 @@ class SearchFragment : Fragment() {
 
                        val user: Users? = snapShots.getValue(Users::class.java)
                        /**user cannot search for his/her own name**/
-                       if(!(user!!.getUID()).equals(firebaseUserID)){
-                           (mUsers as ArrayList<Users>).add(user)
+                       if(!(user?.uid).equals(firebaseUserID)){
+                           (mUsers as ArrayList<Users>).add(user!!)
                        }
                    }
                }
@@ -111,8 +111,8 @@ class SearchFragment : Fragment() {
 
                     val user: Users? = snapShots.getValue(Users::class.java)
                     /**user cannot search for his/her own name**/
-                    if(!(user!!.getUID()).equals(firebaseUserID)){
-                        (mUsers as ArrayList<Users>).add(user)
+                    if(!(user?.uid).equals(firebaseUserID)){
+                        (mUsers as ArrayList<Users>).add(user!!)
                     }
                 }
                 userAdapter = UserAdapter(context!!, mUsers!!, false)

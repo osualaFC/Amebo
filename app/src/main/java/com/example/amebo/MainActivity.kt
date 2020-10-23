@@ -60,10 +60,11 @@ class MainActivity : AppCompatActivity() {
             override fun onDataChange(p0: DataSnapshot) {
                /**check if user is present in the db  (create ur Users model) */
                 if(p0.exists()){
-                    val user: Users? = p0.getValue(Users::class.java)
-                    /**set name and profile views with the data from db**/
-                    username.text = user!!.getUSERNAME()
-                    Picasso.get().load(user.getPROFILE()).placeholder(R.drawable.ic_profile).into(profile_pic)
+
+                   val user: Users? = p0.getValue(Users::class.java)
+                   /**set name and profile views with the data from db**/
+                   username.text = user?.userName
+                  Picasso.get().load(user?.profile).placeholder(R.drawable.ic_profile).into(profile_pic)
                 }
             }
 
