@@ -29,7 +29,7 @@ class MyFirebaseMessaging: FirebaseMessagingService() {
 
         val firebaseUser = FirebaseAuth.getInstance().currentUser
         if(firebaseUser!=null && sent == firebaseUser.uid){
-            if(currentOnlineUser != null){
+            if(currentOnlineUser != user){
                 if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
                     sendOreoNotification(remoteMessage)
                 }
