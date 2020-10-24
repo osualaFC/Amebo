@@ -11,6 +11,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.amebo.fragments.ChatFragment
 import com.example.amebo.fragments.SearchFragment
 import com.example.amebo.fragments.SettingsFragment
+import com.example.amebo.model.Chats
 import com.example.amebo.model.Users
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     /**no of pages to view**/
     private val PAGES = 3
+    private var unreadCount: Int = 0
 
     /**7 get and display user name and image**/
     /**7A reference database and user**/
@@ -35,6 +37,26 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.main_toolbar))
 
+        /**16 get unread messages count**/
+        val ref =FirebaseDatabase.getInstance().reference.child("Chats")
+        ref!!.addValueEventListener(object: ValueEventListener{
+            override fun onDataChange(p0: DataSnapshot) {
+
+                unreadCount = 0
+
+                for(snapshot in p0.children){
+                    val chat = snapshot.getValue(Chats::class.java)
+                    if(chat!!.receiver.equals(firebaseUser!!.uid) && !chat.isseen){
+                        unreadCount+=1
+                    }
+                }
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+
         /** 1B create an instance of ViewPagerFragment adapter**/
         val adapter = ViewPagerAdapter(this)
 
@@ -44,12 +66,14 @@ class MainActivity : AppCompatActivity() {
         /** 1D setting the tab layout using tab layout mediator**/
         TabLayoutMediator(tab_layout, viewpager) { t, position ->
             when (position) {
-                0 -> t.text = "CHATS"
+                0 -> t.text = if(unreadCount == 0)"CHATS" else "$unreadCount CHATS"
                 1 -> t.text = "SEARCH"
                 2 -> t.text = "SETTINGS"
             }
         }.attach()
         /**connect tab layout with viewpager**/
+
+
 
        /**7B get instance of user from the db**/
         firebaseUser = FirebaseAuth.getInstance().currentUser

@@ -29,7 +29,7 @@ class ChatsAdapter(
     var firebaseUser :FirebaseUser = FirebaseAuth.getInstance().currentUser!!
     
    class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-      //var profile_image_left = itemView.profile_image_left
+      //var profile_image = itemView.profile_image
        var text_chat = itemView.text_message_chat
        var image_left = itemView.image_left
        var text_seen = itemView.text_seen_chat
@@ -66,7 +66,7 @@ class ChatsAdapter(
         val chat: Chats = chatList[position]
 
         /**profile pic of receiver**/
-        //Picasso.get().load(imageUrl).placeholder(R.drawable.ic_profile).into(holder.profile_image_left)
+        //Picasso.get().load(imageUrl).placeholder(R.drawable.ic_profile).into(holder.profile_image)
 
         /**for image messages***/
         if (chat.message.equals("sent you an image.") && !chat.url.equals("")) {
