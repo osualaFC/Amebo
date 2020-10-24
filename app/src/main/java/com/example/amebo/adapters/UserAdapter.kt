@@ -1,11 +1,15 @@
 package com.example.amebo.adapters
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.amebo.MessagingActivity
 import com.example.amebo.R
 import com.example.amebo.model.Users
 import com.squareup.picasso.Picasso
@@ -37,7 +41,27 @@ class UserAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val user: Users? = mUsers[position]
         holder.userNameTxt.text = user?.userName
-       // Picasso.get().load(user.getPROFILE()).placeholder(R.drawable.ic_profile).into(holder.profileImageView)
+       Picasso.get().load(user?.profile).placeholder(R.drawable.ic_profile).into(holder.profileImageView)
+
+        holder.itemView.setOnClickListener {
+            val options = arrayOf<CharSequence>(
+                "Send message",
+                "Visit profile"
+            )
+            val builder: AlertDialog.Builder = AlertDialog.Builder(context)
+            builder.setTitle("Checkout ${user?.userName}")
+            builder.setItems(options, DialogInterface.OnClickListener{dialog, position ->
+                    if(position == 0){
+                        val intent = Intent(context, MessagingActivity::class.java)
+                        intent.putExtra("chat_with", user?.uid)
+                        context.startActivity(intent)
+                    }
+                if(position == 1){
+
+                }
+            })
+            builder.show()
+        }
     }
 
     override fun getItemCount(): Int = mUsers.size
