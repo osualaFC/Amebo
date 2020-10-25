@@ -1,17 +1,25 @@
 package com.example.amebo.adapters
 
 import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.amebo.R
+import com.example.amebo.ViewFullImageActivity
+import com.example.amebo.WelcomeActivity
 import com.example.amebo.model.Chats
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.FirebaseDatabase
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.message_item_left.view.*
@@ -76,17 +84,80 @@ class ChatsAdapter(
                 holder.text_chat.visibility = View.GONE
                 holder.image_right.visibility = View.VISIBLE
                 Picasso.get().load(chat.url).into(holder.image_right)
+
+                /***handle sent images**/
+                holder.image_right.setOnClickListener {
+                    val options = arrayOf<CharSequence>(
+                        "View Full Image",
+                        "Delete Image",
+                        "Cancel"
+                    )
+                    val builder:AlertDialog.Builder = AlertDialog.Builder(context)
+                    builder.setTitle("Actions")
+                    builder.setItems(options, DialogInterface.OnClickListener { dialog, position ->
+                        when(position){
+                            0 ->{
+                                val intent = Intent(context, ViewFullImageActivity::class.java)
+                                intent.putExtra("url", chat.url)
+                                context.startActivity(intent)
+                            }
+                            1-> {
+                                deleteSentMessages(position, holder)
+                            }
+                        }
+                    })
+                    builder.show()
+                }
             }
             /**display receiver chat images**/
             else if (!chat.sender.equals(firebaseUser.uid)) {
                 holder.text_chat.visibility = View.GONE
                 holder.image_left.visibility = View.VISIBLE
                 Picasso.get().load(chat.url).into(holder.image_left)
+
+                /***handle received images**/
+                holder.image_left.setOnClickListener {
+                    val options = arrayOf<CharSequence>(
+                        "View Full Image",
+                        "Cancel"
+                    )
+                    val builder:AlertDialog.Builder = AlertDialog.Builder(context)
+                    builder.setTitle("Actions")
+                    builder.setItems(options, DialogInterface.OnClickListener { dialog, position ->
+                        when(position){
+                            0 ->{
+                                val intent = Intent(context, ViewFullImageActivity::class.java)
+                                intent.putExtra("url", chat.url)
+                                context.startActivity(intent)
+                            }
+
+                        }
+                    })
+                    builder.show()
+                }
             }
         }
         /**for text messages**/
         else {
             holder.text_chat.text = chat.message
+
+            /***handle chat messages**/
+            holder.text_chat.setOnClickListener {
+                val options = arrayOf<CharSequence>(
+                    "Delete Message",
+                    "Cancel"
+                )
+                val builder:AlertDialog.Builder = AlertDialog.Builder(context)
+                builder.setTitle("Actions")
+                builder.setItems(options, DialogInterface.OnClickListener { dialog, position ->
+                    when(position){
+                        0 ->{
+                            deleteSentMessages(position, holder)
+                        }
+                    }
+                })
+                builder.show()
+            }
         }
 
         /**for sent and seen indicator**/
@@ -121,6 +192,21 @@ class ChatsAdapter(
     }
     override fun getItemCount(): Int{
         return chatList.size
+    }
+
+    /**delete sent message***/
+    private fun deleteSentMessages(position: Int, holder: ChatsAdapter.MyViewHolder){
+        val ref = FirebaseDatabase.getInstance().reference.child("Chats")
+            .child(chatList[position].messageId).removeValue()
+            .addOnCompleteListener{task->
+                if(task.isSuccessful){
+                    Toast.makeText(context, "Message deleted", Toast.LENGTH_SHORT).show()
+                }
+                else{
+                    Toast.makeText(context, "Not deleted successfully", Toast.LENGTH_SHORT).show()
+                }
+
+            }
     }
     
 }

@@ -40,7 +40,6 @@
            android:id="@+id/text_seen_chat"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:text="seen"
            android:layout_alignParentEnd="true"
            android:layout_below="@id/text_message_chat"/>
    </RelativeLayout>
