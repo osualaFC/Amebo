@@ -17,4 +17,9 @@
     <string name="username">username</string>
     <string name="email">email</string>
     <string name="password">password</string>
+    <string name="user_str">user name</string>
+    <string name="hellllloo">hellllloo</string>
+    <string name="logout">LogOut</string>
+    <string name="username_">username</string>
+    <string name="send_message">send message</string>
 </resources>

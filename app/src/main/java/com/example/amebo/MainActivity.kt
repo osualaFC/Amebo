@@ -1,10 +1,14 @@
 package com.example.amebo
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -20,6 +24,7 @@ import com.google.firebase.database.*
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.main_app_bar_layout.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -37,17 +42,21 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.main_toolbar))
 
+        /**hide status bar***/
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        actionBar?.hide()
+
         /**16 get unread messages count**/
         val ref =FirebaseDatabase.getInstance().reference.child("Chats")
-        ref!!.addValueEventListener(object: ValueEventListener{
+        ref!!.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(p0: DataSnapshot) {
 
                 unreadCount = 0
 
-                for(snapshot in p0.children){
+                for (snapshot in p0.children) {
                     val chat = snapshot.getValue(Chats::class.java)
-                    if(chat!!.receiver.equals(firebaseUser!!.uid) && !chat.isseen){
-                        unreadCount+=1
+                    if (chat!!.receiver.equals(firebaseUser!!.uid) && !chat.isseen) {
+                        unreadCount += 1
                     }
                 }
             }
@@ -66,8 +75,8 @@ class MainActivity : AppCompatActivity() {
         /** 1D setting the tab layout using tab layout mediator**/
         TabLayoutMediator(tab_layout, viewpager) { t, position ->
             when (position) {
-                0 -> t.text = if(unreadCount == 0)"CHATS" else "$unreadCount CHATS"
-                1 -> t.text = "SEARCH"
+                0 -> t.text = if (unreadCount == 0) "CHATS" else "$unreadCount CHATS"
+                1 -> t.text = "AMEBOS"
                 2 -> t.text = "SETTINGS"
             }
         }.attach()
@@ -80,15 +89,17 @@ class MainActivity : AppCompatActivity() {
         refUsers = FirebaseDatabase.getInstance().reference.child("Users").child(firebaseUser!!.uid)
 
         /**7C display user name and profile picture**/
-        refUsers!!.addValueEventListener(object :ValueEventListener {
+        refUsers!!.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(p0: DataSnapshot) {
-               /**check if user is present in the db  (create ur Users model) */
-                if(p0.exists()){
+                /**check if user is present in the db  (create ur Users model) */
+                if (p0.exists()) {
 
-                   val user: Users? = p0.getValue(Users::class.java)
-                   /**set name and profile views with the data from db**/
-                   username.text = user?.userName
-                  Picasso.get().load(user?.profile).placeholder(R.drawable.ic_profile).into(profile_pic)
+                    val user: Users? = p0.getValue(Users::class.java)
+                    /**set name and profile views with the data from db**/
+                    username.text = user?.userName
+                    Picasso.get().load(user?.profile).placeholder(R.drawable.ic_profile).into(
+                        profile_pic
+                    )
                 }
             }
 
@@ -102,6 +113,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
+
+        val positionOfMenuItem = 0 // or whatever...
+
+        val item = menu.getItem(positionOfMenuItem)
+        val s = SpannableString("LogOut")
+        s.setSpan(ForegroundColorSpan(Color.BLACK), 0, s.length, 0)
+        item.title = s
         return true
     }
 
@@ -115,9 +133,9 @@ class MainActivity : AppCompatActivity() {
                 FirebaseAuth.getInstance().signOut()
                 /** 6B send user back to welcomeActivity**/
 
-                     /** send user to welcome activity **/
+                /** send user to welcome activity **/
                 val intent = Intent(this@MainActivity, WelcomeActivity::class.java)
-                     /** this prevent the user from going back to the mainActivity when the top back arrow is clicked**/
+                /** this prevent the user from going back to the mainActivity when the top back arrow is clicked**/
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
                 finish()
@@ -133,9 +151,7 @@ class MainActivity : AppCompatActivity() {
 
     /** 1A viewpager adapter**/
 
-    private inner class ViewPagerAdapter(frag : FragmentActivity): FragmentStateAdapter(frag){
-
-
+    private inner class ViewPagerAdapter(frag: FragmentActivity): FragmentStateAdapter(frag){
 
         override fun getItemCount(): Int= PAGES
 
@@ -163,10 +179,18 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         updateStatus("online")
+
+        /**hide status bar***/
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        actionBar?.hide()
     }
 
     override fun onPause() {
         super.onPause()
         updateStatus("offline")
+
+        /**hide status bar***/
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        actionBar?.hide()
     }
 }

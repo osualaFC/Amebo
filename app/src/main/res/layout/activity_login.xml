@@ -21,7 +21,7 @@
 
         <ImageView
             android:id="@+id/login_image"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="300dp"
             android:src="@drawable/start_gist"
             app:layout_constraintTop_toBottomOf="@id/login_appbar"

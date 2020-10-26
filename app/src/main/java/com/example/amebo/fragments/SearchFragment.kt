@@ -42,26 +42,27 @@ class SearchFragment : Fragment() {
         //searchList.hasFixedSize()
         searchList.layoutManager = LinearLayoutManager(requireContext())
 
-        mUsers =ArrayList()
+        mUsers = ArrayList()
         /**retrieve all users**/
         retrieveAllUsers()
-
-        /**search edit text listener**/
-        search_for_user.addTextChangedListener(object: TextWatcher{
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                p0
-            }
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                searchForUser(p0.toString().toLowerCase())
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-                p0
-            }
-        })
     }
 
-    private fun retrieveAllUsers() {
+//        /**search edit text listener**/
+//        search_for_user.addTextChangedListener(object: TextWatcher{
+//            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+//                p0
+//            }
+//            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+//                searchForUser(p0.toString().toLowerCase())
+//            }
+//
+//            override fun afterTextChanged(p0: Editable?) {
+//                p0
+//            }
+//        })
+//    }
+
+    fun retrieveAllUsers() {
         var firebaseUserID = FirebaseAuth.getInstance().currentUser?.uid
         /** retrieve all users**/
         var refUsers = FirebaseDatabase.getInstance().reference.child("Users")
@@ -71,7 +72,7 @@ class SearchFragment : Fragment() {
                 /**clear the arrayList**/
                 (mUsers as ArrayList<Users>).clear()
 
-               if(search_for_user!!.text.toString() == ""){
+              // if(search_for_user!!.text.toString() == ""){
                    /**loop thru the users data**/
                    for(snapShots in p0.children){
 
@@ -81,7 +82,7 @@ class SearchFragment : Fragment() {
                            (mUsers as ArrayList<Users>).add(user!!)
                        }
                    }
-               }
+              // }
                 userAdapter = UserAdapter(context!!, mUsers!!, false)
 
                 searchList.adapter = userAdapter
@@ -93,34 +94,37 @@ class SearchFragment : Fragment() {
         })
     }
 
-    /**8B search func to display list the user searched for**/
-    fun searchForUser(str:String){
-        var firebaseUserID = FirebaseAuth.getInstance().currentUser?.uid
-        /** retrieve all users**/
-        var queryUsers = FirebaseDatabase.getInstance().reference.child("Users").orderByChild("search")
-            .startAt(str)
-            .endAt(str + "\uf8ff")
+        /**8B search func to display list the user searched for**/
+        fun searchForUser(str: String) {
+            val firebaseUserID = FirebaseAuth.getInstance().currentUser?.uid
 
-        queryUsers.addValueEventListener(object : ValueEventListener{
-            override fun onDataChange(p0: DataSnapshot) {
-               /**search and display all users with the "str" as name**/
-                (mUsers as ArrayList<Users>).clear()
+            /** retrieve all users**/
+            val queryUsers =
+                FirebaseDatabase.getInstance().reference.child("Users").orderByChild("search")
+                    .startAt(str)
+                    .endAt(str + "\uf8ff")
 
-                /**loop thru the users data**/
-                for(snapShots in p0.children){
+            queryUsers.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(p0: DataSnapshot) {
+                    /**search and display all users with the "str" as name**/
+                    (mUsers as ArrayList<Users>).clear()
 
-                    val user: Users? = snapShots.getValue(Users::class.java)
-                    /**user cannot search for his/her own name**/
-                    if(!(user?.uid).equals(firebaseUserID)){
-                        (mUsers as ArrayList<Users>).add(user!!)
+                    /**loop thru the users data**/
+                    for (snapShots in p0.children) {
+
+                        val user: Users? = snapShots.getValue(Users::class.java)
+                        /**user cannot search for his/her own name**/
+                        if (!(user?.uid).equals(firebaseUserID)) {
+                            (mUsers as ArrayList<Users>).add(user!!)
+                        }
                     }
+                    userAdapter = UserAdapter(context!!, mUsers!!, false)
                 }
-                userAdapter = UserAdapter(context!!, mUsers!!, false)
-            }
 
-            override fun onCancelled(p0: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })
-    }
+                override fun onCancelled(p0: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
+        }
+
 }

@@ -5,6 +5,6 @@
     <item
         android:id="@+id/logout"
         android:orderInCategory="100"
-        android:title="LogOut"
+        android:title="@string/logout"
         app:showAsAction="never" />
 </menu>

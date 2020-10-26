@@ -2,8 +2,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:backgroundTint="@color/colorHint"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:elevation="10dp"
+    android:layout_marginBottom="2dp"
+    android:background="@drawable/chat_drawable">
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
         android:layout_width="60dp"
@@ -14,39 +21,36 @@
         android:id="@+id/user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="user name"
-        android:layout_toRightOf="@id/profile_image"
+        android:text="@string/user_str"
+        android:layout_toEndOf="@id/profile_image"
         android:layout_centerInParent="true"
         android:layout_marginStart="12dp"
         android:textSize="19sp"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/status_online"
-        android:layout_width="19dp"
-        android:layout_height="19dp"
-        android:src="@drawable/profile"
-        app:civ_border_width="12dp"
-        app:civ_border_color="#05df29"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
         android:layout_below="@id/user_name"
-        android:layout_marginTop="1dp"
-        android:layout_marginStart="-16dp"
+        android:layout_marginStart="-19dp"
+        android:layout_marginTop="14dp"
         android:layout_toEndOf="@id/profile_image"
-        android:layout_toRightOf="@id/user_name"
+        android:src="@drawable/profile"
         android:visibility="gone"
-        />
+        app:civ_border_color="#05df29"
+        app:civ_border_width="12dp" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/status_offline"
-        android:layout_width="19dp"
-        android:layout_height="19dp"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
         android:src="@drawable/profile"
         app:civ_border_width="12dp"
         app:civ_border_color="#bfbfbf"
         android:layout_below="@id/user_name"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="14dp"
         android:layout_marginStart="-16dp"
         android:layout_toEndOf="@id/profile_image"
-        android:layout_toRightOf="@id/user_name"
         android:visibility="gone"
         />
 
@@ -54,14 +58,15 @@
         android:id="@+id/message_last"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/profile_image"
+        android:layout_toEndOf="@id/profile_image"
         android:layout_below="@id/user_name"
         android:layout_marginTop="14dp"
         android:layout_marginStart="20dp"
-        android:text="hellllloo"
+        android:text=""
         android:padding="6dp"
         android:maxLines="1"
-        android:textSize="10sp"
-        android:textColor="@color/colorPrimaryDark"/>
+        android:textSize="12sp"
+        android:textColor="@color/colorBlack"/>
+</RelativeLayout>
 
 </RelativeLayout>

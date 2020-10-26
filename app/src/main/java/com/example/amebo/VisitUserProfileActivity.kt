@@ -32,7 +32,7 @@ class VisitUserProfileActivity : AppCompatActivity() {
 
                     username_visit_settings.text = user!!.userName
                     Picasso.get().load(user?.profile).into(profile_image_visit_settings)
-                    Picasso.get().load(user?.cover).into(cover_image_visit_settings)
+                   // Picasso.get().load(user?.cover).into(cover_image_visit_settings)
                 }
             }
 

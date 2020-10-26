@@ -59,7 +59,7 @@ class SettingsFragment : Fragment() {
                    if(context != null){
                        view.username_settings.text = user?.userName
                        Picasso.get().load(user?.profile).placeholder(R.drawable.user_icon).into(view.profile_image_settings)
-                       Picasso.get().load(user?.cover).placeholder(R.drawable.cover).into(view.cover_image_settings)
+                       //Picasso.get().load(user?.cover).placeholder(R.drawable.cover).into(view.cover_image_settings)
                    }
 
 
@@ -76,11 +76,11 @@ class SettingsFragment : Fragment() {
             pickImage()
         }
 
-        /***update cover pic**/
-        view.cover_image_settings.setOnClickListener {
-            coverChecker = "cover"
-            pickImage()
-        }
+//        /***update cover pic**/
+//        view.cover_image_settings.setOnClickListener {
+//            coverChecker = "cover"
+//            pickImage()
+//        }
 
         /***set social links**/
         view.set_fb.setOnClickListener {
