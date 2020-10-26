@@ -25,7 +25,8 @@ class RegisterActivity : AppCompatActivity() {
         /** set toolbar title **/
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.register_toolbar)
         setSupportActionBar(toolbar)
-        supportActionBar!!.title = "Register"
+        supportActionBar!!.title = ""
+        supportActionBar!!.elevation = 0F
         /** creates a back arrow button **/
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         /**3B send the user back to the WelcomeActivity when the back arrow button is clicked**/
@@ -46,9 +47,9 @@ class RegisterActivity : AppCompatActivity() {
     /**4C register user function**/
     private fun registerUser(){
         /** get users details **/
-        val userName = register_username.text.toString()
-        val userEmail = register_email.text.toString()
-        val userPassword = register_password.text.toString()
+        val userName = register_username.editText?.text.toString()
+        val userEmail = register_email.editText?.text.toString()
+        val userPassword = register_password.editText?.text.toString()
 
         /** validation **/
         if(userName == ""){

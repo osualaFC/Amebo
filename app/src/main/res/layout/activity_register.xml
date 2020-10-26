@@ -1,16 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/register"
+    android:background="@color/colorWhite"
+    android:fillViewport="true"
     tools:context=".RegisterActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <!--    appbar-->
     <include
         android:id="@+id/register_appbar"
-        layout="@layout/register_app_bar_layout"/>
+        layout="@layout/register_app_bar_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/register_first_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/autour_one"
+        android:text="@string/amebo"
+        android:textColor="@color/colorRed"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.053"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register_appbar" />
+
+    <TextView
+        android:id="@+id/register_second_text"
+        android:layout_width="284dp"
+        android:layout_height="155dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/baloo_thambi"
+        android:text="@string/create_new_account"
+        android:textColor="#000000"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.103"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register_first_text" />
 
 <!--     register form-->
     <LinearLayout
@@ -19,47 +61,113 @@
         android:orientation="vertical"
         android:padding="16dp"
         android:gravity="center_horizontal"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        app:layout_constraintTop_toBottomOf="@id/register_second_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/register_username"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:inputType="text"
-            android:hint="username"
-            android:textColorHint="@android:color/white"/>
+            android:fontFamily="@font/roboto_medium"
+            android:hint="@string/username"
+            android:textColorHint="@color/colorHint"
+            android:textStyle="bold"
+            app:boxStrokeColor="@color/colorRed"
+            app:boxStrokeWidthFocused="2dp"
+            app:endIconMode="clear_text"
+            app:hintTextColor="@color/colorRed"
+            app:startIconDrawable="@drawable/ic_person"
+            app:startIconTint="@color/colorHint">
 
-        <EditText
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/text_username"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/roboto_medium"
+                android:inputType="text"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/register_email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:inputType="textEmailAddress"
-            android:hint="email"
-            android:layout_marginTop="10dp"
-            android:textColorHint="@android:color/white"/>
+            android:fontFamily="@font/roboto_medium"
+            android:hint="@string/email"
+            android:textColorHint="@color/colorHint"
+            android:textStyle="bold"
+            app:boxStrokeColor="@color/colorRed"
+            app:boxStrokeWidthFocused="2dp"
+            app:endIconMode="clear_text"
+            app:hintTextColor="@color/colorRed"
+            app:startIconDrawable="@drawable/ic_email"
+            app:startIconTint="@color/colorHint">
 
-        <EditText
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/text_email"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/roboto_medium"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/register_password"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:inputType="textPassword"
-            android:hint="password"
-            android:layout_marginTop="10dp"
-            android:textColorHint="@android:color/white"/>
+            android:fontFamily="@font/roboto_medium"
+            android:hint="@string/password"
+            android:textColorHint="@color/colorHint"
+            android:textStyle="bold"
+            app:boxStrokeColor="@color/colorRed"
+            app:boxStrokeWidthFocused="2dp"
+            app:endIconMode="clear_text"
+            app:hintTextColor="@color/colorRed"
+            app:startIconDrawable="@drawable/ic_lock"
+            app:startIconTint="@color/colorHint">
 
-        <Button
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/text_password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/roboto_medium"
+                android:inputType="numberPassword"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/register_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:text="Register"
-            android:background="@color/colorPrimaryDark"
-            android:layout_marginTop="10dp"
+            android:layout_width="290dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="28dp"
+            android:backgroundTint="@color/colorRed"
+            android:paddingStart="60dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="60dp"
+            android:paddingBottom="20dp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/baloo_thambi"
+            android:text="Continue"
+            android:textColor="@color/colorWhite"
+            app:cornerRadius="15dp"
             />
 
     </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</RelativeLayout>
+</androidx.core.widget.NestedScrollView>

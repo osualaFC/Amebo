@@ -1,40 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/welcome"
-    android:orientation="vertical"
-    android:gravity="center"
+    android:background="#fff"
+    android:fillViewport="true"
     tools:context=".WelcomeActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+    <ImageView
+        android:id="@+id/intro_image"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:background="@drawable/amebo_bg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+       />
 
     <TextView
+        android:id="@+id/first_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome"
-        android:textColor="@android:color/white"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/autour_one"
+        android:text="@string/amebo"
+        android:textColor="@color/colorRed"
+        android:textSize="25sp"
         android:textStyle="bold"
-        android:textSize="35sp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.053"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/intro_image" />
 
-    <Button
+    <TextView
+        android:id="@+id/second_text"
+        android:layout_width="284dp"
+        android:layout_height="155dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/baloo_thambi"
+        android:text="@string/let_s_keep_the_conversation_going"
+        android:textColor="#000000"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.103"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/first_text" />
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/welcome_register_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
+        android:layout_width="290dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="@color/colorRed"
+        android:paddingStart="60dp"
+        android:paddingTop="20dp"
+        android:paddingEnd="60dp"
+        android:paddingBottom="20dp"
         android:text="Register"
-        android:background="@color/colorPrimaryDark"
-        android:layout_marginTop="10dp"
-        />
+        android:textColor="@color/colorWhite"
+        android:fontFamily="@font/baloo_thambi"
+        app:cornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.462"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/second_text" />
 
-    <Button
-        android:id="@+id/welcome_login_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
-        android:text="Login"
-        android:background="@color/colorPrimaryDark"
-        android:layout_marginTop="25dp"
-        />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/welcome_login_button"
+            android:layout_width="290dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="#000000"
+            android:fontFamily="@font/baloo_thambi"
+            android:paddingStart="60dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="60dp"
+            android:paddingBottom="20dp"
+            android:text="Login"
+            android:textColor="@color/colorWhite"
+            app:cornerRadius="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/welcome_register_button" />
 
-</LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

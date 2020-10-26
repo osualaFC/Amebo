@@ -11,4 +11,10 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="amebo">Amebo</string>
+    <string name="let_s_keep_the_conversation_going">Let\'s keep the conversation going</string>
+    <string name="create_new_account">Create new account</string>
+    <string name="username">username</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
 </resources>
