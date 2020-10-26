@@ -14,9 +14,10 @@
         android:id="@+id/text_message_chat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/profile_image_left"
+        android:layout_toEndOf="@id/profile_image_left"
         android:layout_marginStart="6dp"
-        android:text="messaging"
+        android:text="@string/messaging"
+        android:textColor="@color/colorBlack"
         android:textSize="18sp"
         android:padding="8dp"
         android:background="@drawable/background_left"/>
@@ -25,7 +26,7 @@
         android:id="@+id/image_left"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_toRightOf="@id/profile_image_left"
+        android:layout_toEndOf="@id/profile_image_left"
         android:layout_marginStart="6dp"
         android:visibility="gone"/>
 

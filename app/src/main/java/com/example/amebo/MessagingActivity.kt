@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -48,6 +49,11 @@ class MessagingActivity : AppCompatActivity() {
         setSupportActionBar(messaging_toolbar)
         supportActionBar!!.title=""
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
+        /**hide status bar***/
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        actionBar?.hide()
+
         messaging_toolbar.setNavigationOnClickListener {
             finish()
         }
@@ -276,6 +282,17 @@ class MessagingActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         reference!!.removeEventListener(seenListener!!)
+
+        /**hide status bar***/
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        actionBar?.hide()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        /**hide status bar***/
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        actionBar?.hide()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
