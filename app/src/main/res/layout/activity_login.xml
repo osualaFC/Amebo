@@ -1,16 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login"
+    android:background="@color/colorWhite"
     tools:context=".LoginActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <!--    appbar-->
     <include
         android:id="@+id/login_appbar"
-        layout="@layout/login_app_bar_layout"/>
+        layout="@layout/login_app_bar_layout"
+        app:layout_constraintEnd_toEndOf="@id/container"
+        app:layout_constraintStart_toStartOf="@id/container"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+            android:id="@+id/login_image"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/start_gist"
+            app:layout_constraintTop_toBottomOf="@id/login_appbar"
+            app:layout_constraintStart_toStartOf="@id/container"
+            app:layout_constraintEnd_toEndOf="@id/container"/>
+
 
     <!--     login form-->
     <LinearLayout
@@ -19,41 +36,87 @@
         android:orientation="vertical"
         android:padding="16dp"
         android:gravity="center_horizontal"
+        app:layout_constraintEnd_toEndOf="@id/container"
+        app:layout_constraintStart_toStartOf="@id/container"
+        app:layout_constraintTop_toBottomOf="@id/login_image"
         android:layout_centerInParent="true">
 
-
-
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/login_email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:inputType="textEmailAddress"
-            android:hint="email"
-            android:layout_marginTop="25dp"
-            android:textColorHint="@android:color/white"/>
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/roboto_medium"
+            android:hint="@string/email"
+            android:textColorHint="@color/colorHint"
+            android:textStyle="bold"
+            app:boxStrokeColor="@color/colorRed"
+            app:boxStrokeWidthFocused="2dp"
+            app:endIconMode="clear_text"
+            app:hintTextColor="@color/colorRed"
+            app:startIconDrawable="@drawable/ic_email"
+            app:startIconTint="@color/colorHint">
 
-        <EditText
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/login_text_email"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/roboto_medium"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/login_password"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:inputType="textPassword"
-            android:hint="password"
-            android:layout_marginTop="25dp"
-            android:textColorHint="@android:color/white"/>
+            android:fontFamily="@font/roboto_medium"
+            android:hint="@string/password"
+            android:textColorHint="@color/colorHint"
+            android:textStyle="bold"
+            app:boxStrokeColor="@color/colorRed"
+            app:boxStrokeWidthFocused="2dp"
+            app:endIconMode="clear_text"
+            app:hintTextColor="@color/colorRed"
+            app:startIconDrawable="@drawable/ic_lock"
+            app:startIconTint="@color/colorHint">
 
-        <Button
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/login_text_password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/roboto_medium"
+                android:inputType="numberPassword"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/login_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:text="Login"
-            android:background="@color/colorPrimaryDark"
-            android:layout_marginTop="25dp"
+            android:layout_width="290dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="28dp"
+            android:backgroundTint="@color/colorBlack"
+            android:paddingStart="60dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="60dp"
+            android:paddingBottom="20dp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/baloo_thambi"
+            android:text="Oya! start gist"
+            android:textColor="@color/colorWhite"
+            app:cornerRadius="15dp"
             />
 
     </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</RelativeLayout>
+</androidx.core.widget.NestedScrollView>

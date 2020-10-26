@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.activity_register.*
         /** set toolbar title **/
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.login_toolbar)
         setSupportActionBar(toolbar)
-        supportActionBar!!.title = "Login"
+        supportActionBar!!.title = ""
         /** creates a back arrow button **/
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         /**3A send the user back to the WelcomeActivity when the back arrow button is clicked**/
@@ -41,8 +41,8 @@ import kotlinx.android.synthetic.main.activity_register.*
      /**5B login user function **/
      private fun loginUser(){
          /** get user details**/
-         val userEmail = login_email.text.toString()
-         val userPassword = login_password.text.toString()
+         val userEmail = login_email.editText?.text.toString()
+         val userPassword = login_password.editText?.text.toString()
 
          /** validation**/
          if(userEmail == ""){
