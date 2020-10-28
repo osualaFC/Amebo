@@ -1,4 +1,4 @@
-package com.example.amebo
+package com.example.amebo.ui
 
 import android.content.Intent
 import android.graphics.Color
@@ -12,9 +12,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.amebo.fragments.ChatFragment
-import com.example.amebo.fragments.SearchFragment
-import com.example.amebo.fragments.SettingsFragment
+import com.example.amebo.R
+import com.example.amebo.ui.fragments.ChatFragment
+import com.example.amebo.ui.fragments.SearchFragment
+import com.example.amebo.ui.fragments.SettingsFragment
 import com.example.amebo.model.Chats
 import com.example.amebo.model.Users
 import com.google.android.material.tabs.TabLayoutMediator
@@ -114,7 +115,7 @@ class MainActivity : AppCompatActivity() {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
 
-        val positionOfMenuItem = 0 // or whatever...
+        val positionOfMenuItem = 0
 
         val item = menu.getItem(positionOfMenuItem)
         val s = SpannableString("LogOut")

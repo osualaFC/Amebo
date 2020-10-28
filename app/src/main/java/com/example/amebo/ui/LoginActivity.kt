@@ -1,12 +1,12 @@
- package com.example.amebo
+ package com.example.amebo.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.example.amebo.R
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_register.*
 
  class LoginActivity : AppCompatActivity() {
 

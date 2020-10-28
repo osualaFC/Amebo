@@ -1,4 +1,4 @@
-package com.example.amebo
+package com.example.amebo.ui
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.amebo.R
 import com.example.amebo.adapters.ChatsAdapter
 import com.example.amebo.model.Chats
 import com.example.amebo.model.Users

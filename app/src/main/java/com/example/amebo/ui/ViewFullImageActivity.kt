@@ -1,7 +1,8 @@
-package com.example.amebo
+package com.example.amebo.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.amebo.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_view_full_image.*
 

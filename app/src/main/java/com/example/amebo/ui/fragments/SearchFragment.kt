@@ -1,8 +1,6 @@
-package com.example.amebo.fragments
+package com.example.amebo.ui.fragments
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View

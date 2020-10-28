@@ -9,9 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.amebo.MessagingActivity
+import com.example.amebo.ui.MessagingActivity
 import com.example.amebo.R
-import com.example.amebo.VisitUserProfileActivity
+import com.example.amebo.ui.VisitUserProfileActivity
 import com.example.amebo.model.Chats
 import com.example.amebo.model.Users
 import com.google.firebase.auth.FirebaseAuth
@@ -21,7 +21,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
-import kotlinx.android.synthetic.main.main_app_bar_layout.*
 import kotlinx.android.synthetic.main.user_search_item_layout.view.*
 /**8 adapter for search fragment**/
 class UserAdapter(

@@ -1,4 +1,4 @@
-package com.example.amebo.fragments
+package com.example.amebo.ui.fragments
 
 import android.app.Activity
 import android.app.AlertDialog

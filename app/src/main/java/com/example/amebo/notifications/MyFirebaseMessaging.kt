@@ -3,7 +3,6 @@ package com.example.amebo.notifications
 import android.app.Notification
 import android.app.NotificationManager
 import android.app.PendingIntent
-import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.media.RingtoneManager
@@ -11,7 +10,7 @@ import android.os.Build
 import android.os.Bundle
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
-import com.example.amebo.MessagingActivity
+import com.example.amebo.ui.MessagingActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage

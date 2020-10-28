@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.1"
@@ -52,6 +53,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage-ktx:19.1.1'
     implementation 'com.google.firebase:firebase-database-ktx:19.2.1'
     implementation 'com.google.firebase:firebase-messaging:20.1.2'
+
 
     /** A fast circular ImageView perfect for profile images. **/
     implementation 'de.hdodenhof:circleimageview:2.2.0'

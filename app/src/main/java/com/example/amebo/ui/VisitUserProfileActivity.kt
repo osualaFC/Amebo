@@ -1,9 +1,10 @@
-package com.example.amebo
+package com.example.amebo.ui
 
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.amebo.R
 import com.example.amebo.model.Users
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
